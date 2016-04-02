@@ -1,32 +1,16 @@
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class ProgramaPrincipal{
 
 	public static void main(String[] args) {
-		try{
-			FileInputStream fstream = new FileInputStream("entrada.txt");
-			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+		
+		Building parkingBuilding = new Building(4);
+		IOHandler eventReader = new IOHandler();
 
-			String strLine;
-			Building parkingBuilding = new Building();	
+		//eventReader.openFile();
+		
+		while(parkingBuilding.eventHandler(eventReader.readInputLine()));
 
-			while ((strLine = br.readLine()) != null)   {
-		 		//FAZER COISAS
-		 		
-		 		
-
-		  		System.out.println (strLine);
-		  		parkingBuilding.eventHandler(strLine);
-			}
-			br.close();
-		} catch (IOException e){
-			//TODO
-		}
+		System.out.println ("terminou arquivo");
+		
 	}
 }
 
