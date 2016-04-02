@@ -58,7 +58,7 @@ public class Level{
 
 	public void insertVehicle(String carSpotType,int level,String time,String plate){
 		int carSpotNumber=0;
-		Car car = new Car(time,plate);
+		Car car = new Car(time,plate,carSpotType);
 
 		switch(carSpotType){
 			case "VP":

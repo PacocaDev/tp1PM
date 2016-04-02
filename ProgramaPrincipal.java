@@ -5,11 +5,9 @@ public class ProgramaPrincipal{
 		Building parkingBuilding = new Building(4);
 		IOHandler eventReader = new IOHandler();
 
-		//eventReader.openFile();
-		
 		while(parkingBuilding.eventHandler(eventReader.readInputLine()));
 
-		System.out.println ("terminou arquivo");
+		//System.out.println ("terminou arquivo");
 		
 	}
 }

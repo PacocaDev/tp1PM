@@ -19,10 +19,6 @@ public class IOHandler{
 		 		System.out.println("IOException");
 		 	}
 	}
-	
-	public void openFile(){
-		
-	}
 
 	public String readInputLine(){
 		
