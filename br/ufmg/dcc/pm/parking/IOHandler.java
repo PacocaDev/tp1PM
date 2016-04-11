@@ -1,4 +1,4 @@
-package br.ufmg.dcc.pm;
+package br.ufmg.dcc.pm.parking;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

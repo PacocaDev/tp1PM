@@ -1,5 +1,6 @@
-package br.ufmg.dcc.pm;
+package br.ufmg.dcc.pm.parking;
 public class Level{
+	
 	private CarSpot vp[];
 	private CarSpot mt[];
 	private CarSpot vg[];
@@ -32,6 +33,7 @@ public class Level{
 
 		return true;
 	}
+	
 	public boolean isMtSpotFull(){
 		for(int z=0;z<2;z++){
 			if(!mt[z].isOccupied())
@@ -40,6 +42,7 @@ public class Level{
 
 		return true;
 	}
+	
 	public boolean isVgSpotFull(){
 		for(int z=0;z<2;z++){
 			if(!vg[z].isOccupied())
@@ -48,6 +51,7 @@ public class Level{
 
 		return true;
 	}
+	
 	public boolean isNeSpotFull(){
 		for(int z=0;z<2;z++){
 			if(!ne[z].isOccupied())

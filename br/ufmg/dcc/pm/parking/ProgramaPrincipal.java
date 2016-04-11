@@ -1,4 +1,4 @@
-package br.ufmg.dcc.pm;
+package br.ufmg.dcc.pm.parking;
 public class ProgramaPrincipal{
 
 	public static void main(String[] args) {
