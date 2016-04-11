@@ -1,8 +1,9 @@
+package br.ufmg.dcc.pm;
 public class Level{
-	CarSpot vp[];
-	CarSpot mt[];
-	CarSpot vg[];
-	CarSpot ne[];
+	private CarSpot vp[];
+	private CarSpot mt[];
+	private CarSpot vg[];
+	private CarSpot ne[];
 
 	public Level(){
 		vp = new CarSpot[4];
@@ -25,7 +26,7 @@ public class Level{
 
 	public boolean isVpSpotFull(){
 		for(int z=0;z<4;z++){
-			if(!vp[z].occupied)
+			if(!vp[z].isOccupied())
 				return false;
 		}
 
@@ -33,7 +34,7 @@ public class Level{
 	}
 	public boolean isMtSpotFull(){
 		for(int z=0;z<2;z++){
-			if(!mt[z].occupied)
+			if(!mt[z].isOccupied())
 				return false;
 		}
 
@@ -41,7 +42,7 @@ public class Level{
 	}
 	public boolean isVgSpotFull(){
 		for(int z=0;z<2;z++){
-			if(!vg[z].occupied)
+			if(!vg[z].isOccupied())
 				return false;
 		}
 
@@ -49,7 +50,7 @@ public class Level{
 	}
 	public boolean isNeSpotFull(){
 		for(int z=0;z<2;z++){
-			if(!ne[z].occupied)
+			if(!ne[z].isOccupied())
 				return false;
 		}
 
@@ -63,10 +64,10 @@ public class Level{
 		switch(carSpotType){
 			case "VP":
 				for(int i=0;i<4;i++){
-					if(!vp[i].occupied){
-						vp[i].occupied = true;
+					if(!vp[i].isOccupied()){
+						vp[i].setOccupied();
 						carSpotNumber=i;
-						vp[i].car=car;
+						vp[i].setCar(car);
 						break;
 					}
 				}
@@ -74,10 +75,10 @@ public class Level{
 			break;
 			case "MT":
 				for(int i=0;i<2;i++){
-					if(!mt[i].occupied){
-						mt[i].occupied = true;
+					if(!mt[i].isOccupied()){
+						mt[i].setOccupied();
 						carSpotNumber=i;
-						mt[i].car=car;
+						mt[i].setCar(car);
 						break;
 					}
 				}
@@ -85,10 +86,10 @@ public class Level{
 			break;
 			case "VG":
 				for(int i=0;i<2;i++){
-					if(!vg[i].occupied){
-						vg[i].occupied = true;
+					if(!vg[i].isOccupied()){
+						vg[i].setOccupied();
 						carSpotNumber=i;
-						vg[i].car=car;
+						vg[i].setCar(car);
 						break;
 					}
 				}
@@ -96,10 +97,10 @@ public class Level{
 			break;
 			case "NE":
 				for(int i=0;i<2;i++){
-					if(!ne[i].occupied){
-						ne[i].occupied = true;
+					if(!ne[i].isOccupied()){
+						ne[i].setOccupied();
 						carSpotNumber=i;
-						ne[i].car=car;
+						ne[i].setCar(car);
 						break;
 					}
 				}
@@ -111,5 +112,37 @@ public class Level{
 		}
 
 		System.out.println("N"+(++level)+carSpotType+(++carSpotNumber));
+	}
+
+	public CarSpot[] getVp() {
+		return vp;
+	}
+
+	public void setVp(CarSpot[] vp) {
+		this.vp = vp;
+	}
+
+	public CarSpot[] getMt() {
+		return mt;
+	}
+
+	public void setMt(CarSpot[] mt) {
+		this.mt = mt;
+	}
+
+	public CarSpot[] getVg() {
+		return vg;
+	}
+
+	public void setVg(CarSpot[] vg) {
+		this.vg = vg;
+	}
+
+	public CarSpot[] getNe() {
+		return ne;
+	}
+
+	public void setNe(CarSpot[] ne) {
+		this.ne = ne;
 	}
 }

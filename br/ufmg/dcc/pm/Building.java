@@ -1,24 +1,33 @@
-public class Building{
-	Level[] levels;
+package br.ufmg.dcc.pm;
+
+/**
+ * Class representing the Building
+ * @author Alexandre Alphonsos
+ * @author Jerônimo Nunes Rocha
+ *
+ */
+public class Building {
+	
+	private Level[] levels;
 
 	public Building(int i){
 		levels = new Level[i];
-		
+
 		for(int z=0;z<i;z++)
-		levels[z]= new Level();
-		
+			levels[z]= new Level();
+
 	}
 
 	public boolean eventHandler(String info){
-		
+
 		if(info != null){
-			
+
 			String[] attributes = info.split(";");
 			//System.out.print (attributes[0]);
 			//System.out.print (attributes[1]);
 			//System.out.print (attributes[2]);
 			//System.out.println (attributes[3]);
-			
+
 			if(attributes[0].equals("E")){
 				enterVehicle(attributes[1],attributes[2],attributes[3]);
 			} else {
@@ -34,22 +43,22 @@ public class Building{
 
 	public void enterVehicle(String time,String plate,String type){
 		switch (type) {
-			case "VP":
-				insertVP(time,plate);
+		case "VP":
+			insertVP(time,plate);
 			break;
-			case "MT":
-				insertMT(time,plate);
+		case "MT":
+			insertMT(time,plate);
 			break;
-			case "VG":
-				insertVG(time,plate);
+		case "VG":
+			insertVG(time,plate);
 			break;
-			case "NE":
-				insertNE(time,plate);
+		case "NE":
+			insertNE(time,plate);
 			break;
 
-			default:
-             throw new IllegalArgumentException("Invalid vehicle type: " + type);
-			
+		default:
+			throw new IllegalArgumentException("Invalid vehicle type: " + type);
+
 		}
 	}
 
@@ -63,7 +72,7 @@ public class Building{
 			return;
 		}
 		else
-		calculatePrice(car,time);
+			calculatePrice(car,time);
 	}
 
 	public void insertMT(String time,String plate){
@@ -71,44 +80,44 @@ public class Building{
 		//CHECK ALL MT SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isMtSpotFull()){
-			levels[i].insertVehicle("MT",i,time,plate);
-			return;
+				levels[i].insertVehicle("MT",i,time,plate);
+				return;
 			}
 		}
 		//CHECK ALL VP SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVpSpotFull()){
-			levels[i].insertVehicle("VP",i,time,plate);
-			return;
+				levels[i].insertVehicle("VP",i,time,plate);
+				return;
 			}
 		}
 
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-			levels[i].insertVehicle("VG",i,time,plate);
-			return;
+				levels[i].insertVehicle("VG",i,time,plate);
+				return;
 			}
 		}
 		System.out.println("LOTADO");
 	}
 
 	public void insertVP(String time,String plate){
-		
+
 		//CHECK ALL VP SPOTS IN ALL LEVELS
 
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVpSpotFull()){
-			levels[i].insertVehicle("VP",i,time,plate);
-			return;
+				levels[i].insertVehicle("VP",i,time,plate);
+				return;
 			}
 		}
 
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-			levels[i].insertVehicle("VG",i,time,plate);
-			return;
+				levels[i].insertVehicle("VG",i,time,plate);
+				return;
 			}
 		}
 		System.out.println("LOTADO");
@@ -119,8 +128,8 @@ public class Building{
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-			levels[i].insertVehicle("VG",i,time,plate);
-			return;
+				levels[i].insertVehicle("VG",i,time,plate);
+				return;
 			}
 		}
 		System.out.println("LOTADO");
@@ -131,8 +140,8 @@ public class Building{
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isNeSpotFull()){
-			levels[i].insertVehicle("NE",i,time,plate);
-			return;
+				levels[i].insertVehicle("NE",i,time,plate);
+				return;
 			}
 		}
 		System.out.println("LOTADO");
@@ -141,31 +150,31 @@ public class Building{
 	public Car findVehicle(String plate){
 		for(int i=0;i<4;i++){
 			for(int j=0;j<4;j++){
-				if(levels[i].vp[j].occupied){
-					if(levels[i].vp[j].car.plate.equals(plate)){
-						return levels[i].vp[j].car;
+				if(levels[i].getVp()[j].isOccupied()){
+					if(levels[i].getVp()[j].getCar().getPlate().equals(plate)){
+						return levels[i].getVp()[j].getCar();
 					}
 				}
 			}
 			for(int k=0;k<2;k++){
-				if(levels[i].mt[k].occupied){
-					if(levels[i].mt[k].car.plate.equals(plate)){
+				if(levels[i].getMt()[k].isOccupied()){
+					if(levels[i].getMt()[k].getCar().getPlate().equals(plate)){
 
-						return levels[i].mt[k].car;
+						return levels[i].getMt()[k].getCar();
 					}
 				}
 			}
 			for(int l=0;l<2;l++){
-				if(levels[i].vg[l].occupied){
-					if(levels[i].vg[l].car.plate.equals(plate)){
-						return levels[i].vg[l].car;
+				if(levels[i].getVg()[l].isOccupied()){
+					if(levels[i].getVg()[l].getCar().getPlate().equals(plate)){
+						return levels[i].getVg()[l].getCar();
 					}
 				}
 			}
 			for(int m=0;m<2;m++){
-				if(levels[i].ne[m].occupied){
-					if(levels[i].ne[m].car.plate.equals(plate)){
-						return levels[i].ne[m].car;
+				if(levels[i].getNe()[m].isOccupied()){
+					if(levels[i].getNe()[m].getCar().getPlate().equals(plate)){
+						return levels[i].getNe()[m].getCar();
 					}
 				}
 			}	
@@ -179,10 +188,10 @@ public class Building{
 		long iPart,aux2;
 		double fPart;
 
-		double price,minutesElapsed,hoursElapsed;
-		
-		aux = car.time.split(":");
-		
+		double minutesElapsed,hoursElapsed;
+
+		aux = car.getTime().split(":");
+
 		hourEntered = Integer.parseInt(aux[0]);
 		minutesEntered = Integer.parseInt(aux[1]);
 
@@ -207,8 +216,8 @@ public class Building{
 		aux2= Math.round( fPart);
 
 
-		switch(car.carSpotType){
-			case "VP":
+		switch(car.getCarSpotType()){
+		case "VP":
 			System.out.print("VP;");
 			System.out.print(String.format("%02d", iPart));
 			System.out.print(":");
@@ -217,8 +226,8 @@ public class Building{
 			System.out.printf("%.2f", hoursElapsed*6);
 			System.out.println("");
 			break;
-			
-			case "MT":
+
+		case "MT":
 			System.out.print("MT;");
 			System.out.print(String.format("%02d", iPart));
 			System.out.print(":");
@@ -227,8 +236,8 @@ public class Building{
 			System.out.printf("%.2f", hoursElapsed*3.5);
 			System.out.println("");
 			break;
-			
-			case "VG":
+
+		case "VG":
 			System.out.print("VG;");
 			System.out.print(String.format("%02d", iPart));
 			System.out.print(":");
@@ -237,8 +246,8 @@ public class Building{
 			System.out.printf("%.2f", hoursElapsed*8);
 			System.out.println("");
 			break;
-			
-			case "NE":
+
+		case "NE":
 			System.out.print("NE;");
 			System.out.print(String.format("%02d", iPart));
 			System.out.print(":");
@@ -249,7 +258,7 @@ public class Building{
 			break;
 		}
 
-		
+
 	}
-	
+
 }
