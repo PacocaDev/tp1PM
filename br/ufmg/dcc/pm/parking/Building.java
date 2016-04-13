@@ -1,5 +1,10 @@
 package br.ufmg.dcc.pm.parking;
 
+import java.util.List;
+
+import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
+import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
+
 /**
  * Class representing the Building
  * @author Alexandre Alphonsos
@@ -65,14 +70,14 @@ public class Building {
 
 
 	public void exitVehicle(String time,String plate,String type){
-		Car car;
-		car=findVehicle(plate);
-		if(car==null){
+		CarSpot<Vehicle> carSpot;
+		carSpot=findCarSpot(plate);
+		if(carSpot==null){
 			System.out.println("O veículo não está no estacionamento");
 			return;
 		}
 		else
-			calculatePrice(car,time);
+			calculatePrice(carSpot,time);
 	}
 
 	public void insertMT(String time,String plate){
@@ -80,14 +85,14 @@ public class Building {
 		//CHECK ALL MT SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isMtSpotFull()){
-				levels[i].insertVehicle("MT",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.MT,i,time,plate);
 				return;
 			}
 		}
 		//CHECK ALL VP SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVpSpotFull()){
-				levels[i].insertVehicle("VP",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.VP,i,time,plate);
 				return;
 			}
 		}
@@ -95,7 +100,7 @@ public class Building {
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-				levels[i].insertVehicle("VG",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.VG,i,time,plate);
 				return;
 			}
 		}
@@ -108,7 +113,7 @@ public class Building {
 
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVpSpotFull()){
-				levels[i].insertVehicle("VP",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.VP,i,time,plate);
 				return;
 			}
 		}
@@ -116,7 +121,7 @@ public class Building {
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-				levels[i].insertVehicle("VG",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.VG,i,time,plate);
 				return;
 			}
 		}
@@ -128,7 +133,7 @@ public class Building {
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isVgSpotFull()){
-				levels[i].insertVehicle("VG",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.VG,i,time,plate);
 				return;
 			}
 		}
@@ -140,49 +145,27 @@ public class Building {
 		//CHECK ALL VG SPOTS IN ALL LEVELS
 		for(int i=0;i<4;i++){
 			if(!levels[i].isNeSpotFull()){
-				levels[i].insertVehicle("NE",i,time,plate);
+				levels[i].insertVehicle(VehicleTypeEnum.NE,i,time,plate);
 				return;
 			}
 		}
 		System.out.println("LOTADO");
 	}
 
-	public Car findVehicle(String plate){
-		for(int i=0;i<4;i++){
-			for(int j=0;j<4;j++){
-				if(levels[i].getVp()[j].isOccupied()){
-					if(levels[i].getVp()[j].getCar().getPlate().equals(plate)){
-						return levels[i].getVp()[j].getCar();
+	public CarSpot<Vehicle> findCarSpot(String plate){
+		for(Level l : levels){
+			for(List<CarSpot<Vehicle>> carSpots : l.getCarSpots()){
+				for(CarSpot<Vehicle> carSpot : carSpots){
+					if(carSpot.getVehicle()!=null && carSpot.getVehicle().getPlate().equals(plate)){
+						return carSpot;
 					}
 				}
 			}
-			for(int k=0;k<2;k++){
-				if(levels[i].getMt()[k].isOccupied()){
-					if(levels[i].getMt()[k].getCar().getPlate().equals(plate)){
-
-						return levels[i].getMt()[k].getCar();
-					}
-				}
-			}
-			for(int l=0;l<2;l++){
-				if(levels[i].getVg()[l].isOccupied()){
-					if(levels[i].getVg()[l].getCar().getPlate().equals(plate)){
-						return levels[i].getVg()[l].getCar();
-					}
-				}
-			}
-			for(int m=0;m<2;m++){
-				if(levels[i].getNe()[m].isOccupied()){
-					if(levels[i].getNe()[m].getCar().getPlate().equals(plate)){
-						return levels[i].getNe()[m].getCar();
-					}
-				}
-			}	
 		}
 		return null;
 	}
 
-	public void calculatePrice(Car car,String exitTime){
+	public void calculatePrice(CarSpot<Vehicle> carSpot,String exitTime){
 		String[] aux;
 		int hourEntered,minutesEntered,hourGone,minutesGone;
 		long iPart,aux2;
@@ -190,7 +173,7 @@ public class Building {
 
 		double minutesElapsed,hoursElapsed;
 
-		aux = car.getTime().split(":");
+		aux = carSpot.getEntranceTime().split(":");
 
 		hourEntered = Integer.parseInt(aux[0]);
 		minutesEntered = Integer.parseInt(aux[1]);
@@ -199,12 +182,6 @@ public class Building {
 
 		hourGone = Integer.parseInt(aux[0]);
 		minutesGone = Integer.parseInt(aux[1]);
-
-		//System.out.println("testetste");
-		//System.out.println(hourEntered+":"+minutesEntered);
-		//System.out.println(hourGone+":"+minutesGone);
-
-		//System.out.println("testetste");
 
 		minutesElapsed=(hourGone*60+minutesGone)-(hourEntered*60+minutesEntered);
 		hoursElapsed=minutesElapsed/60;
@@ -215,49 +192,14 @@ public class Building {
 		fPart =fPart*60;
 		aux2= Math.round( fPart);
 
-
-		switch(car.getCarSpotType()){
-		case "VP":
-			System.out.print("VP;");
-			System.out.print(String.format("%02d", iPart));
-			System.out.print(":");
-			System.out.print(String.format("%02d", aux2));
-			System.out.print(";");
-			System.out.printf("%.2f", hoursElapsed*6);
-			System.out.println("");
-			break;
-
-		case "MT":
-			System.out.print("MT;");
-			System.out.print(String.format("%02d", iPart));
-			System.out.print(":");
-			System.out.print(String.format("%02d", aux2));
-			System.out.print(";");
-			System.out.printf("%.2f", hoursElapsed*3.5);
-			System.out.println("");
-			break;
-
-		case "VG":
-			System.out.print("VG;");
-			System.out.print(String.format("%02d", iPart));
-			System.out.print(":");
-			System.out.print(String.format("%02d", aux2));
-			System.out.print(";");
-			System.out.printf("%.2f", hoursElapsed*8);
-			System.out.println("");
-			break;
-
-		case "NE":
-			System.out.print("NE;");
-			System.out.print(String.format("%02d", iPart));
-			System.out.print(":");
-			System.out.print(String.format("%02d", aux2));
-			System.out.print(";");
-			System.out.printf("%.2f", hoursElapsed*6);
-			System.out.println("");
-			break;
-		}
-
+		System.out.print(carSpot.getVehicle().getVehicleType());
+		System.out.print(";");
+		System.out.print(String.format("%02d", iPart));
+		System.out.print(":");
+		System.out.print(String.format("%02d", aux2));
+		System.out.print(";");
+		System.out.printf("%.2f", hoursElapsed*carSpot.getVehicle().getVehicleType().getPrice());
+		System.out.println();
 
 	}
 

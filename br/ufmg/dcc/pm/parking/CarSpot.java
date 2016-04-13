@@ -1,10 +1,14 @@
 package br.ufmg.dcc.pm.parking;
 
-public class CarSpot {
+import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
+
+public class CarSpot<T extends Vehicle> {
 	
 	private boolean occupied = false;
 	
-	private Car car;
+	private String entranceTime;
+	
+	private T vehicle;
 	
 	public boolean isOccupied() {
 		return occupied;
@@ -18,12 +22,20 @@ public class CarSpot {
 		this.occupied = true;
 	}
 
-	public Car getCar() {
-		return car;
+	public T getVehicle() {
+		return vehicle;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public void setVehicle(T vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	public String getEntranceTime() {
+		return entranceTime;
+	}
+
+	public void setEntranceTime(String entranceTime) {
+		this.entranceTime = entranceTime;
 	}
 
 }
