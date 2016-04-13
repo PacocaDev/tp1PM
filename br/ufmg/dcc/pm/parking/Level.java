@@ -86,6 +86,7 @@ public class Level {
 					if(!carSpot.isOccupied()){
 						carSpot.setOccupied();
 						carSpot.setVehicle(new Car(plate));
+						carSpot.setEntranceTime(time);
 						break;
 					} else {
 						carSpotNumber++;
@@ -97,6 +98,7 @@ public class Level {
 					if(!carSpot.isOccupied()){
 						carSpot.setOccupied();
 						carSpot.setVehicle(new Motocycle(plate));
+						carSpot.setEntranceTime(time);
 						break;
 					} else {
 						carSpotNumber++;
@@ -108,6 +110,7 @@ public class Level {
 					if(!carSpot.isOccupied()){
 						carSpot.setOccupied();
 						carSpot.setVehicle(new LargeCar(plate));
+						carSpot.setEntranceTime(time);
 						break;
 					} else {
 						carSpotNumber++;
@@ -119,6 +122,7 @@ public class Level {
 					if(!carSpot.isOccupied()){
 						carSpot.setOccupied();
 						carSpot.setVehicle(new DisabledPersonVehicle(plate));
+						carSpot.setEntranceTime(time);
 						break;
 					} else {
 						carSpotNumber++;
