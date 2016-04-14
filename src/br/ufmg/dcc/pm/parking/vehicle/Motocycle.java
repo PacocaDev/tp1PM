@@ -4,6 +4,12 @@ import java.util.Calendar;
 
 import br.ufmg.dcc.pm.parking.Building;
 
+/**
+ * Represents a motocycle
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public class Motocycle extends SmallCar {
 
 	public static final VehicleTypeEnum TYPE = VehicleTypeEnum.MT;

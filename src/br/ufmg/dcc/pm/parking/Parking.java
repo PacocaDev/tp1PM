@@ -4,6 +4,13 @@ import java.io.FileNotFoundException;
 
 import br.ufmg.dcc.pm.parking.event.AbstractEvent;
 
+/**
+ * The parking itself, will read all events
+ * and prints the output
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public class Parking {
 
 	public static void main(String[] args) throws FileNotFoundException {

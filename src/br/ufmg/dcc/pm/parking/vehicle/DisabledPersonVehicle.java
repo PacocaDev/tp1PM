@@ -4,6 +4,12 @@ import java.util.Calendar;
 
 import br.ufmg.dcc.pm.parking.Building;
 
+/**
+ * Represents a vehicle driven by a disabled person
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public class DisabledPersonVehicle extends Vehicle {
 	
 	public static final VehicleTypeEnum TYPE = VehicleTypeEnum.NE;

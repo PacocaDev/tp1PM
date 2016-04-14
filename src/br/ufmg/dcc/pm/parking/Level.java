@@ -6,43 +6,49 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.ufmg.dcc.pm.parking.vehicle.LargeCar;
 import br.ufmg.dcc.pm.parking.vehicle.DisabledPersonVehicle;
-import br.ufmg.dcc.pm.parking.vehicle.SmallCar;
+import br.ufmg.dcc.pm.parking.vehicle.LargeCar;
 import br.ufmg.dcc.pm.parking.vehicle.Motocycle;
+import br.ufmg.dcc.pm.parking.vehicle.SmallCar;
 import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
 
+/**
+ * Represents a Level of a building, contains all vacancies of the level
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public class Level {
 
-	private List<Vacancy<SmallCar>> vp;
-	private List<Vacancy<Motocycle>> mt;
-	private List<Vacancy<LargeCar>> vg;
-	private List<Vacancy<DisabledPersonVehicle>> ne;
 	private Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> vacancys;
 	
 	private int level;
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * Constructs a new {@link Level}
+	 * @param level The number (starting at zero) of the level
+	 */
 	public Level(int level){
 		this.level = level+1;
 		vacancys = new HashMap<>(4);
-		vp = new ArrayList<>(4);
-		vacancys.put(VehicleTypeEnum.VP,(List<Vacancy<Vehicle>>)(List<?>)vp);
-		mt = new ArrayList<>(2);
-		vacancys.put(VehicleTypeEnum.MT,(List<Vacancy<Vehicle>>)(List<?>)mt);
-		vg = new ArrayList<>(2);
-		vacancys.put(VehicleTypeEnum.VG,(List<Vacancy<Vehicle>>)(List<?>)vg);
-		ne = new ArrayList<>(2);
-		vacancys.put(VehicleTypeEnum.NE,(List<Vacancy<Vehicle>>)(List<?>)ne);
+		ArrayList<Vacancy<Vehicle>> vp = new ArrayList<>(4);
+		vacancys.put(VehicleTypeEnum.VP,vp);
+		ArrayList<Vacancy<Vehicle>> mt = new ArrayList<>(2);
+		vacancys.put(VehicleTypeEnum.MT,mt);
+		ArrayList<Vacancy<Vehicle>> vg = new ArrayList<>(2);
+		vacancys.put(VehicleTypeEnum.VG,vg);
+		ArrayList<Vacancy<Vehicle>> ne = new ArrayList<>(2);
+		vacancys.put(VehicleTypeEnum.NE,ne);
 
-		for(int z=0;z<4;z++)
-			vp.add(new Vacancy<SmallCar>());
+		for(int z=0;z<4;z++) {
+			vp.add(new Vacancy<Vehicle>());
+		}
 
 		for(int z=0;z<2;z++){
-			mt.add(new Vacancy<Motocycle>());
-			vg.add(new Vacancy<LargeCar>());
-			ne.add(new Vacancy<DisabledPersonVehicle>());
+			mt.add(new Vacancy<Vehicle>());
+			vg.add(new Vacancy<Vehicle>());
+			ne.add(new Vacancy<Vehicle>());
 		}
 
 	}
@@ -76,38 +82,6 @@ public class Level {
 			}
 		}
 		return null;
-	}
-
-	public List<Vacancy<SmallCar>> getVp() {
-		return vp;
-	}
-
-	public void setVp(List<Vacancy<SmallCar>> vp) {
-		this.vp = vp;
-	}
-
-	public List<Vacancy<Motocycle>> getMt() {
-		return mt;
-	}
-
-	public void setMt(List<Vacancy<Motocycle>> mt) {
-		this.mt = mt;
-	}
-
-	public List<Vacancy<LargeCar>> getVg() {
-		return vg;
-	}
-
-	public void setVg(List<Vacancy<LargeCar>> vg) {
-		this.vg = vg;
-	}
-
-	public List<Vacancy<DisabledPersonVehicle>> getNe() {
-		return ne;
-	}
-
-	public void setNe(List<Vacancy<DisabledPersonVehicle>> ne) {
-		this.ne = ne;
 	}
 
 	public Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> getCarSpots() {

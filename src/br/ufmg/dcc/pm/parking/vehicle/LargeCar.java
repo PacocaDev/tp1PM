@@ -4,6 +4,12 @@ import java.util.Calendar;
 
 import br.ufmg.dcc.pm.parking.Building;
 
+/**
+ * Represents a large car
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public class LargeCar extends Vehicle {
 
 	public static final VehicleTypeEnum TYPE = VehicleTypeEnum.VG;

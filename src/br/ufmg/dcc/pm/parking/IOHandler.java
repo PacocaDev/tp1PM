@@ -11,7 +11,14 @@ import br.ufmg.dcc.pm.parking.event.EventTypeEnum;
 import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
 
-public class IOHandler{
+/**
+ * Reads events that happened at the parking lot from a file called entrada.txt
+ * The file must be at running directory of the program
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
+public class IOHandler {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm");
 	private Scanner scanner;

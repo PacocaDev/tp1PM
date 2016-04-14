@@ -5,6 +5,14 @@ import java.util.Calendar;
 import br.ufmg.dcc.pm.parking.Building;
 import br.ufmg.dcc.pm.parking.Vacancy;
 
+/**
+ * A vehicle representation to the parking lot, 
+ * must know how to find it's place inside the building
+ * and how to get out of it
+ * @author Alexandre Alphonsos Rodrigues Pereira
+ * @author Jerônimo Nunes Rocha
+ *
+ */
 public abstract class Vehicle {
 	
 	private String plate;

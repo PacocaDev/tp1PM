@@ -10,8 +10,8 @@ import br.ufmg.dcc.pm.parking.vehicle.SmallCar;
 import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 
 /**
- * Class representing the Building
- * @author Alexandre Alphonsos
+ * Class representing the Building of the parking lot
+ * @author Alexandre Alphonsos Rodrigues Pereira
  * @author Jerônimo Nunes Rocha
  *
  */
