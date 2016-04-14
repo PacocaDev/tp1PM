@@ -21,6 +21,9 @@ import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
  */
 public class Level {
 
+	/**
+	 * Map containing all {@link Vacancy} of all {@link VehicleTypeEnum}
+	 */
 	private Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> vacancys;
 	
 	private int level;
@@ -53,27 +56,57 @@ public class Level {
 
 	}
 	
+	/**
+	 * Places a vehicle in the level if there is a vacancy of its type available
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return The info about the entrance or null if not placed
+	 */
 	public String enterVehicle(LargeCar vehicle, Calendar time) {
 		return enterVehicle(vehicle, time, VehicleTypeEnum.VG);
 	}
 	
+	/**
+	 * Places a vehicle in the level if there is a vacancy of its type available
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return The info about the entrance or null if not placed
+	 */
 	public String enterVehicle(SmallCar vehicle, Calendar time) {
 		return enterVehicle(vehicle, time, VehicleTypeEnum.VP);
 	}
 	
+	/**
+	 * Places a vehicle in the level if there is a vacancy of its type available
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return The info about the entrance or null if not placed
+	 */
 	public String enterVehicle(Motocycle vehicle, Calendar time) {
 		return enterVehicle(vehicle, time, VehicleTypeEnum.MT);
 	}
 	
+	/**
+	 * Places a vehicle in the level if there is a vacancy of its type available
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return The info about the entrance or null if not placed
+	 */
 	public String enterVehicle(DisabledPersonVehicle vehicle, Calendar time) {
 		return enterVehicle(vehicle, time, VehicleTypeEnum.NE);
 	}
 
+	/**
+	 * Places a vehicle in the level at the specified vacancyType
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @param vacancyType The type of vacancy that the vehicle must be placed
+	 * @return The info about the entrance or null if not placed
+	 */
 	private String enterVehicle(Vehicle vehicle, Calendar time, VehicleTypeEnum vacancyType){
 		int vacancyNumber = 1;
 		for(Vacancy<Vehicle> vacancy : vacancys.get(vacancyType)){
 			if(!vacancy.isOccupied()){
-				vacancy.setOccupied();
 				vacancy.setVehicle(vehicle);
 				vacancy.setEntranceTime(time);
 				return "N"+level+vacancyType+vacancyNumber;

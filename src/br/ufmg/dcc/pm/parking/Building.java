@@ -17,8 +17,15 @@ import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
  */
 public class Building {
 	
+	/**
+	 * The levels available in the building
+	 */
 	private Level[] levels;
 
+	/**
+	 * Constructs a new Building
+	 * @param i The number of levels that will be available
+	 */
 	public Building(int i){
 		levels = new Level[i];
 
@@ -26,6 +33,12 @@ public class Building {
 
 	}
 	
+	/**
+	 * Places a vehicle in the building
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return
+	 */
 	public String enterVehicle(LargeCar vehicle, Calendar enterTime){
 		String info = null;
 		for(Level level : levels){
@@ -37,6 +50,12 @@ public class Building {
 		return info;
 	}
 	
+	/**
+	 * Places a vehicle in the building
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return
+	 */
 	public String enterVehicle(SmallCar vehicle, Calendar enterTime){
 		String info = null;
 		for(Level level : levels){
@@ -48,6 +67,12 @@ public class Building {
 		return info;
 	}
 	
+	/**
+	 * Places a vehicle in the building
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return
+	 */
 	public String enterVehicle(Motocycle vehicle, Calendar enterTime){
 		String info = null;
 		for(Level level : levels){
@@ -59,6 +84,12 @@ public class Building {
 		return info;
 	}
 	
+	/**
+	 * Places a vehicle in the building
+	 * @param vehicle The vehicle to place
+	 * @param enterTime When the entrance happened
+	 * @return
+	 */
 	public String enterVehicle(DisabledPersonVehicle vehicle, Calendar enterTime){
 		String info = null;
 		for(Level level : levels){
@@ -70,7 +101,12 @@ public class Building {
 		return info;
 	}
 
-	public Vacancy<Vehicle> findCarSpot(Vehicle vehicle){
+	/**
+	 * Finds where a vehicle is placed
+	 * @param vehicle The vehicle to look for
+	 * @return The {@link Vacancy} where the {@link Vehicle} is placed
+	 */
+	public Vacancy<Vehicle> findVacancy(Vehicle vehicle){
 		for(Level l : levels){
 			for(List<Vacancy<Vehicle>> vacancys : l.getCarSpots().values()){
 				for(Vacancy<Vehicle> vacancy : vacancys){
