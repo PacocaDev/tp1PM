@@ -8,8 +8,8 @@ package br.ufmg.dcc.pm.parking.vehicle;
  */
 public enum VehicleTypeEnum {
 		
-	VP(6d   , LargeCar.class                  ),
-	VG(8d   , SmallCar.class             ),
+	VP(6d   , SmallCar.class                  ),
+	VG(8d   , LargeCar.class             ),
 	MT(3.5d , Motocycle.class            ),
 	NE(6d   , DisabledPersonVehicle.class);
 	

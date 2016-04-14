@@ -61,7 +61,7 @@ public abstract class Vehicle {
 		fPart = fPart*60;
 		aux2 = Math.round( fPart);
 
-		MessageFormat format = new MessageFormat("{0}';'{1,number,#00}':'{2,number,#00}';'{3,number,#.00}",new Locale("pt","BR"));
+		MessageFormat format = new MessageFormat("{0}';'{1,number,#00}':'{2,number,#00}';'{3,number,#0.00}",new Locale("pt","BR"));
 
 		String msg = format.format(new Object[]{
 			getVehicleType().toString(),
