@@ -27,6 +27,14 @@ public abstract class Vehicle {
 	
 	public abstract VehicleTypeEnum getVehicleType();
 
+	/**
+	 * Deal with the entrance of the vehicle in the building
+	 * retrying with a different available type if can't insert at the
+	 * current type
+	 * @param building
+	 * @param enterTime
+	 * @return
+	 */
 	public abstract String enterBuilding(Building building, Calendar enterTime);
 	
 	public void calculatePrice(Calendar entranceTime, Calendar exitTime){
@@ -62,11 +70,12 @@ public abstract class Vehicle {
 	}
 
 	public void exitBuilding(Building building, Calendar exitTime){
-		Vacancy<Vehicle> vacancy = building.findCarSpot(this);
+		Vacancy<Vehicle> vacancy = building.findVacancy(this);
 		if(vacancy==null){
 			System.out.println("O veículo não está no estacionamento");
 		} else {
 			calculatePrice(vacancy.getEntranceTime(), exitTime);
+			vacancy.setVehicle(null);
 		}
 	}
 

@@ -12,8 +12,7 @@ import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
 
 /**
- * Reads events that happened at the parking lot from a file called entrada.txt
- * The file must be at running directory of the program
+ * Reads events that happened at the parking lot from a file
  * @author Alexandre Alphonsos Rodrigues Pereira
  * @author Jerônimo Nunes Rocha
  *
@@ -22,11 +21,30 @@ public class IOHandler {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm");
 	private Scanner scanner;
-
-	public IOHandler() throws FileNotFoundException {
-		scanner = new Scanner(new File("entrada.txt"));
+	
+	/**
+	 * Constructs a new {@link IOHandler} that will read the events from a file
+	 * @param file A file containing the elements
+	 * @throws FileNotFoundException if the file isn't found
+	 */
+	public IOHandler(File file) throws FileNotFoundException{
+		scanner = new Scanner(file);
 	}
 
+	/**
+	 * Constructs a new {@link IOHandler} that will read from a file
+	 * called entrada.txt
+	 * The file must be at running directory of the program
+	 * @throws FileNotFoundException
+	 */
+	public IOHandler() throws FileNotFoundException {
+		this(new File("entrada.txt"));
+	}
+
+	/**
+	 * Reads the next line of input and transforms it into an event
+	 * @return The {@link AbstractEvent} represented by the line
+	 */
 	public AbstractEvent read(){
 		try {
 			if (scanner.hasNextLine())   {

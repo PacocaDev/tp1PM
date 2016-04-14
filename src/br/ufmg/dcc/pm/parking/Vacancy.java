@@ -13,24 +13,24 @@ import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
  */
 public class Vacancy<T extends Vehicle> {
 	
-	private boolean occupied = false;
-	
-	private Calendar entranceTime;
-	
+	/**
+	 * The vehicle placed in the vacancy
+	 */
 	private T vehicle;
 	
+	/**
+	 * When did the last vehicle entered
+	 */
+	private Calendar entranceTime;
+	
+	/**
+	 * If there is any vehicle occupying the vacancy
+	 * @return
+	 */
 	public boolean isOccupied() {
-		return occupied;
-	}
-
-	public void setOccupied(boolean occupied) {
-		this.occupied = occupied;
+		return vehicle!=null;
 	}
 	
-	public void setOccupied() {
-		this.occupied = true;
-	}
-
 	public T getVehicle() {
 		return vehicle;
 	}
