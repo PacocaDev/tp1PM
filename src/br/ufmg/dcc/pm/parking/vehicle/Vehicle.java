@@ -1,6 +1,8 @@
 package br.ufmg.dcc.pm.parking.vehicle;
 
 import java.util.Calendar;
+import java.text.MessageFormat;
+import java.util.Locale;
 
 import br.ufmg.dcc.pm.parking.Building;
 import br.ufmg.dcc.pm.parking.Vacancy;
@@ -51,14 +53,16 @@ public abstract class Vehicle {
 		fPart = fPart*60;
 		aux2 = Math.round( fPart);
 
-		System.out.print(getVehicleType());
-		System.out.print(";");
-		System.out.print(String.format("%02d", iPart));
-		System.out.print(":");
-		System.out.print(String.format("%02d", aux2));
-		System.out.print(";");
-		System.out.printf("%.2f", hoursElapsed*getVehicleType().getPrice());
-		System.out.println();
+		MessageFormat format = new MessageFormat("{0}';'{1,number,#00}':'{2,number,#00}';'{3,number,#.00}",new Locale("pt","BR"));
+
+		String msg = format.format(new Object[]{
+			getVehicleType().toString(),
+			iPart,
+			aux2,
+			hoursElapsed*getVehicleType().getPrice()
+		});
+
+		System.out.println(msg);
 	}
 
 	public void exitBuilding(Building building, Calendar exitTime){
