@@ -31,7 +31,7 @@ public abstract class Vehicle {
 
 	public abstract String enterBuilding(Building building, Calendar enterTime);
 	
-	public void calculatePrice(Calendar entranceTime, Calendar exitTime){
+	public String calculatePrice(Calendar entranceTime, Calendar exitTime){
 		int hourEntered,minutesEntered,hourGone,minutesGone;
 		long iPart,aux2;
 		double fPart;
@@ -62,15 +62,15 @@ public abstract class Vehicle {
 			hoursElapsed*getVehicleType().getPrice()
 		});
 
-		System.out.println(msg);
+		return msg;
 	}
 
-	public void exitBuilding(Building building, Calendar exitTime){
+	public String exitBuilding(Building building, Calendar exitTime){
 		Vacancy<Vehicle> vacancy = building.findCarSpot(this);
 		if(vacancy==null){
-			System.out.println("O veículo não está no estacionamento");
+			return null;
 		} else {
-			calculatePrice(vacancy.getEntranceTime(), exitTime);
+			return calculatePrice(vacancy.getEntranceTime(), exitTime);
 		}
 	}
 

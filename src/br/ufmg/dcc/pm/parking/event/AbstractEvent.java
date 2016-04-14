@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import br.ufmg.dcc.pm.parking.Building;
 import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
+import java.io.PrintStream;
 
 /**
  * Class that represents an event 
@@ -27,6 +28,11 @@ public abstract class AbstractEvent {
 	 * The Type
 	 */
 	private EventTypeEnum type;
+
+	/**
+	* The Writer to print events
+	*/
+	private PrintStream writer;
 	
 	/**
 	 * Method that will handle what happens when the event is triggered 
@@ -56,6 +62,14 @@ public abstract class AbstractEvent {
 
 	public void setType(EventTypeEnum type) {
 		this.type = type;
+	}
+
+	public PrintStream getWriter() {
+		return writer;
+	}
+
+	public void setWriter(PrintStream writer) {
+		this.writer = writer;
 	}
 	
 }

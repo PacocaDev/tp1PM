@@ -14,9 +14,9 @@ public class EnterEvent extends AbstractEvent {
 	public void handle(Building building) {
 		String info = getVehicle().enterBuilding(building,getDate()); 
 		if(info==null){
-			System.out.println("LOTADO");
+			getWriter().println("LOTADO");
 		} else {
-			System.out.println(info);
+			getWriter().println(info);
 		}
 	}
 

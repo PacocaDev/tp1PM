@@ -12,7 +12,12 @@ public class ExitEvent extends AbstractEvent {
 
 	@Override
 	public void handle(Building building) {
-		getVehicle().exitBuilding(building,getDate());
+		String info = getVehicle().exitBuilding(building,getDate()); 
+		if(info==null){
+			getWriter().println("O veículo não está no estacionamento");
+		} else {
+			getWriter().println(info);
+		}
 	}
 
 }
