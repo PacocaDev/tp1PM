@@ -1,12 +1,14 @@
 package br.ufmg.dcc.pm.parking;
 
+import java.util.Calendar;
+
 import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 
-public class CarSpot<T extends Vehicle> {
+public class Vacancy<T extends Vehicle> {
 	
 	private boolean occupied = false;
 	
-	private String entranceTime;
+	private Calendar entranceTime;
 	
 	private T vehicle;
 	
@@ -30,11 +32,11 @@ public class CarSpot<T extends Vehicle> {
 		this.vehicle = vehicle;
 	}
 
-	public String getEntranceTime() {
+	public Calendar getEntranceTime() {
 		return entranceTime;
 	}
 
-	public void setEntranceTime(String entranceTime) {
+	public void setEntranceTime(Calendar entranceTime) {
 		this.entranceTime = entranceTime;
 	}
 
