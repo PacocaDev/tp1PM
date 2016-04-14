@@ -19,14 +19,24 @@ public abstract class Vehicle {
 	
 	private String plate;
 
+	/**
+	 * @return The plate of the {@link Vehicle}
+	 */
 	public String getPlate() {
 		return plate;
 	}
 
+	/**
+	 * 
+	 * @param plate The plate of the {@link Vehicle}
+	 */
 	public void setPlate(String plate) {
 		this.plate = plate;
 	}
 	
+	/**
+	 * @return The {@link VehicleTypeEnum} of the {@link Vehicle}
+	 */
 	public abstract VehicleTypeEnum getVehicleType();
 
 	/**
@@ -39,7 +49,7 @@ public abstract class Vehicle {
 	 */
 	public abstract String enterBuilding(Building building, Calendar enterTime);
 	
-	public String calculatePrice(Calendar entranceTime, Calendar exitTime){
+	private String calculatePrice(Calendar entranceTime, Calendar exitTime){
 		int hourEntered,minutesEntered,hourGone,minutesGone;
 		long iPart,aux2;
 		double fPart;
@@ -73,6 +83,13 @@ public abstract class Vehicle {
 		return msg;
 	}
 
+	/**
+	 * Deal with the exiting of the vehicle in the building
+	 * searching for the car in every {@link Vacancy}
+	 * @param building The building where the vehicle is supposed to be
+	 * @param exitTime When the exit happened
+	 * @return A String with price info or null if the vehicle weren't found
+	 */
 	public String exitBuilding(Building building, Calendar exitTime){
 		Vacancy<Vehicle> vacancy = building.findVacancy(this);
 		if(vacancy==null){

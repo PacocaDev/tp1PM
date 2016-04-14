@@ -22,10 +22,17 @@ public enum VehicleTypeEnum {
 		this.vehicleClass = vehicleClass;
 	}
 
+	/**
+	 * @return How much the {@link Vehicle} that has this {@link VehicleTypeEnum}
+	 * @return must pay for every hour spent at the Parking Lot
+	 */
 	public double getPrice() {
 		return price;
 	}
 	
+	/**
+	 * @return Which {@link Class} of {@link Vehicle} is of this {@link VehicleTypeEnum}
+	 */
 	public Class<? extends Vehicle> getVehicleClass() {
 		return vehicleClass;
 	}

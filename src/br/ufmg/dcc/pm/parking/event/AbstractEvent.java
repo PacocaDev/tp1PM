@@ -14,24 +14,9 @@ import java.io.PrintStream;
  */
 public abstract class AbstractEvent {
 
-	/**
-	 * When the event occur
-	 */
 	private Calendar date;
-	
-	/**
-	 * Which vehicle was it associated with
-	 */
 	private Vehicle vehicle;
-	
-	/**
-	 * The Type
-	 */
 	private EventTypeEnum type;
-
-	/**
-	* The Writer to print events
-	*/
 	private PrintStream writer;
 	
 	/**
@@ -40,34 +25,60 @@ public abstract class AbstractEvent {
 	 */
 	public abstract void handle(Building building);
 
+	/**
+	 * @return The date that the event occur
+	 */
 	public Calendar getDate() {
 		return date;
 	}
 
+	/**
+	 * @param date The date that the event occur
+	 */
 	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
+	/**
+	 * @return Which vehicle was it associated with this
+	 */
 	public Vehicle getVehicle() {
 		return vehicle;
 	}
 
+	/**
+	 * Associates a {@link Vehicle} to this
+	 * @param vehicle A vehicle to associate with
+	 */
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
 
+	/**
+	 * @return The {@link EventTypeEnum} of the event
+	 */
 	public EventTypeEnum getType() {
 		return type;
 	}
 
+	/**
+	 * Defines the {@link EventTypeEnum} of the event
+	 * @param type The {@link EventTypeEnum} to associate
+	 */
 	public void setType(EventTypeEnum type) {
 		this.type = type;
 	}
 
+	/**
+	 * @return The writer to write event info
+	 */
 	public PrintStream getWriter() {
 		return writer;
 	}
 
+	/**
+	 * @param writer Sets the writer to print event info
+	 */
 	public void setWriter(PrintStream writer) {
 		this.writer = writer;
 	}

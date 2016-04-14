@@ -31,18 +31,31 @@ public class Vacancy<T extends Vehicle> {
 		return vehicle!=null;
 	}
 	
+	/**
+	 * @return Which vehicle is in this {@link Vacancy}
+	 */
 	public T getVehicle() {
 		return vehicle;
 	}
 
+	/**
+	 * @param vehicle A {@link Vehicle} to place in this {@link Vacancy}
+	 */
 	public void setVehicle(T vehicle) {
 		this.vehicle = vehicle;
 	}
 
+	/**
+	 * @return When the last {@link Vehicle} entered this {@link Vacancy}
+	 */
 	public Calendar getEntranceTime() {
 		return entranceTime;
 	}
 
+	/**
+	 * Sets the time when the last {@link Vehicle} was placed in this {@link Vacancy}
+	 * @param entranceTime The time
+	 */
 	public void setEntranceTime(Calendar entranceTime) {
 		this.entranceTime = entranceTime;
 	}

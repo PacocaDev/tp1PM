@@ -108,7 +108,7 @@ public class Building {
 	 */
 	public Vacancy<Vehicle> findVacancy(Vehicle vehicle){
 		for(Level l : levels){
-			for(List<Vacancy<Vehicle>> vacancys : l.getCarSpots().values()){
+			for(List<Vacancy<Vehicle>> vacancys : l.getVacancies().values()){
 				for(Vacancy<Vehicle> vacancy : vacancys){
 					if(vehicle.equals(vacancy.getVehicle())){
 						return vacancy;

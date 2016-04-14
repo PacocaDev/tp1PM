@@ -26,7 +26,10 @@ public class Level {
 	 */
 	private Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> vacancys;
 	
-	private int level;
+	/**
+	 * Which level is this in the building
+	 */
+	private final int level;
 
 	/**
 	 * Constructs a new {@link Level}
@@ -117,11 +120,11 @@ public class Level {
 		return null;
 	}
 
-	public Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> getCarSpots() {
+	/**
+	 * @return The {@link Vacancy} available grouped by {@link VehicleTypeEnum}
+	 */
+	public Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> getVacancies() {
 		return vacancys;
 	}
 
-	public void setCarSpots(Map<VehicleTypeEnum, List<Vacancy<Vehicle>>> vacancys) {
-		this.vacancys = vacancys;
-	}
 }

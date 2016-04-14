@@ -17,6 +17,9 @@ public enum EventTypeEnum {
 		this.eventClass = eventClass;
 	}
 
+	/**
+	 * @return Which class is associated with the {@link EventTypeEnum}
+	 */
 	public Class<? extends AbstractEvent> getEventClass() {
 		return eventClass;
 	}
