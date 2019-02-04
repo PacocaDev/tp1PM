@@ -3,7 +3,7 @@ package br.ufmg.dcc.pm.parking.vehicle;
 /**
  * An enum containing all vehicles that can access the Parking lot
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public enum VehicleTypeEnum {

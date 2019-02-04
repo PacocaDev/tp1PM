@@ -3,7 +3,7 @@ package br.ufmg.dcc.pm.parking.event;
 /**
  * An enum containing all events that can happen in a Parking Lot
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public enum EventTypeEnum {

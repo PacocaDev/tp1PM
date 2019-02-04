@@ -7,7 +7,7 @@ import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 /**
  * Represents one vacancy of a level
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  * @param <T> Which kind of vehicle can this vacancy hold
  */

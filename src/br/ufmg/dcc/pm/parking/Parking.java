@@ -8,7 +8,7 @@ import br.ufmg.dcc.pm.parking.event.AbstractEvent;
  * The parking itself, will read all events
  * and prints the output
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class Parking {

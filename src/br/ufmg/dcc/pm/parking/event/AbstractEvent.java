@@ -10,7 +10,7 @@ import java.io.PrintStream;
  * Class that represents an event 
  * that can happen in a Parking lot
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  */
 public abstract class AbstractEvent {
 

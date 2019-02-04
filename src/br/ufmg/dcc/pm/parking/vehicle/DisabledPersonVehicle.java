@@ -7,7 +7,7 @@ import br.ufmg.dcc.pm.parking.Building;
 /**
  * Represents a vehicle driven by a disabled person
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class DisabledPersonVehicle extends Vehicle {

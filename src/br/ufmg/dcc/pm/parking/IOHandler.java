@@ -15,7 +15,7 @@ import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
 /**
  * Reads events that happened at the parking lot from a file
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class IOHandler {

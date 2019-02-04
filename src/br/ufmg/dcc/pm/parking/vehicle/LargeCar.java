@@ -7,7 +7,7 @@ import br.ufmg.dcc.pm.parking.Building;
 /**
  * Represents a large car
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class LargeCar extends Vehicle {

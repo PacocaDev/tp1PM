@@ -12,7 +12,7 @@ import br.ufmg.dcc.pm.parking.Vacancy;
  * must know how to find it's place inside the building
  * and how to get out of it
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public abstract class Vehicle {

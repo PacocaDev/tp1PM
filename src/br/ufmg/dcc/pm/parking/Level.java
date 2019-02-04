@@ -16,7 +16,7 @@ import br.ufmg.dcc.pm.parking.vehicle.VehicleTypeEnum;
 /**
  * Represents a Level of a building, contains all vacancies of the level
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class Level {

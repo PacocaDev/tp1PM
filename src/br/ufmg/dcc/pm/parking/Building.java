@@ -12,7 +12,7 @@ import br.ufmg.dcc.pm.parking.vehicle.Vehicle;
 /**
  * Class representing the Building of the parking lot
  * @author Alexandre Alphonsos Rodrigues Pereira
- * @author Jerônimo Nunes Rocha
+ * @author Jeronimo Nunes Rocha
  *
  */
 public class Building {
